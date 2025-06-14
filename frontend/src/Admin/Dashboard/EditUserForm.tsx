@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
+import { useNavigationGuard } from "../../hooks/useNavigationGuard";
 
 interface Role {
   id: number;
@@ -29,6 +30,9 @@ export default function EditUserPage() {
   const [errors, setErrors] = useState<FormErrors>({});
 
   const navigate = useNavigate();
+
+  const [isDirty, setIsDirty] = useState(false);
+  useNavigationGuard(isDirty);
 
   const handleCancel = () => {
     navigate("/users");
@@ -102,7 +106,7 @@ export default function EditUserPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-
+    setIsDirty(false);
     navigate("/users");
   };
 
@@ -116,7 +120,6 @@ export default function EditUserPage() {
         <h1 className="text-2xl font-bold text-blue-700 mb-6">✏️ Edit User</h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               🧑 Name
@@ -124,7 +127,10 @@ export default function EditUserPage() {
             <input
               type="text"
               value={user.name}
-              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              onChange={(e) => {
+                setUser({ ...user, name: e.target.value });
+                setIsDirty(true);
+              }}
               className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
@@ -133,7 +139,6 @@ export default function EditUserPage() {
             )}
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               📧 Email
@@ -141,7 +146,10 @@ export default function EditUserPage() {
             <input
               type="email"
               value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              onChange={(e) => {
+                setUser({ ...user, email: e.target.value });
+                setIsDirty(true);
+              }}
               className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
@@ -150,7 +158,6 @@ export default function EditUserPage() {
             )}
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               🔒 Password
@@ -158,7 +165,10 @@ export default function EditUserPage() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setIsDirty(true);
+              }}
               placeholder="Leave blank to keep current password"
               className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -166,7 +176,7 @@ export default function EditUserPage() {
               <div className="text-red-500 text-sm mt-1">{errors.password}</div>
             )}
           </div>
-          {/* Roles */}
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               📛 Roles
@@ -180,13 +190,14 @@ export default function EditUserPage() {
                   <input
                     type="checkbox"
                     checked={roles.includes(role.id)}
-                    onChange={() =>
+                    onChange={() => {
                       setRoles((prev) =>
                         prev.includes(role.id)
                           ? prev.filter((r) => r !== role.id)
                           : [...prev, role.id]
-                      )
-                    }
+                      );
+                      setIsDirty(true);
+                    }}
                     className="mr-2"
                   />
                   {role.name}
@@ -198,7 +209,6 @@ export default function EditUserPage() {
             </div>
           </div>
 
-          {/* Submit */}
           <div className="flex justify-end gap-2 pt-4 border-t border-gray-100">
             <button
               type="button"

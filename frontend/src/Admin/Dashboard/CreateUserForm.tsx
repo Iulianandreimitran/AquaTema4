@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import { useNavigationGuard } from "../../hooks/useNavigationGuard";
 
 interface Role {
   id: number;
@@ -24,6 +25,8 @@ export default function CreateUserForm() {
   const [errors, setErrors] = useState<FormErrors>({});
 
   const navigate = useNavigate();
+  const [isDirty, setIsDirty] = useState(false);
+  useNavigationGuard(isDirty);
 
   const handleCancel = () => {
     navigate("/users");
@@ -89,6 +92,7 @@ export default function CreateUserForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
     });
+    setIsDirty(false);
     handleCancel();
   };
 
@@ -110,7 +114,10 @@ export default function CreateUserForm() {
           </label>
           <input
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              setIsDirty(true);
+            }}
             className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none ${
               errors.name ? "border-red-500" : "border-gray-300"
             }`}
@@ -127,7 +134,10 @@ export default function CreateUserForm() {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setIsDirty(true);
+            }}
             className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none ${
               errors.email ? "border-red-500" : "border-gray-300"
             }`}
@@ -144,7 +154,10 @@ export default function CreateUserForm() {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setIsDirty(true);
+            }}
             className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none ${
               errors.password ? "border-red-500" : "border-gray-300"
             }`}
@@ -164,13 +177,14 @@ export default function CreateUserForm() {
                 <input
                   type="checkbox"
                   checked={selectedRoles.includes(role.id)}
-                  onChange={() =>
+                  onChange={() => {
                     setSelectedRoles((prev) =>
                       prev.includes(role.id)
                         ? prev.filter((id) => id !== role.id)
                         : [...prev, role.id]
-                    )
-                  }
+                    );
+                    setIsDirty(true);
+                  }}
                 />
                 <span>{role.name}</span>
               </label>
@@ -191,7 +205,13 @@ export default function CreateUserForm() {
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+            disabled={!isDirty}
+            className={`px-4 py-2 rounded-md shadow transition 
+    ${
+      !isDirty
+        ? "bg-gray-300 cursor-not-allowed text-gray-500"
+        : "bg-green-600 text-white hover:bg-green-700"
+    }`}
           >
             Create
           </button>
