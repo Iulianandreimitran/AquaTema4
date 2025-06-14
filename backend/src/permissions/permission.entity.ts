@@ -6,9 +6,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  Unique,
 } from 'typeorm';
 
 @Entity('permissions')
+@Unique(['resource', 'action'])
 export class Permission {
   @PrimaryGeneratedColumn()
   id: number;
