@@ -19,6 +19,7 @@ import { HotelGroup } from './hotel-groups/entities/hotel-group.entity';
 import { Hotel } from './hotels/hotel.entity';
 import { City } from './cities/city.entity';
 import { Region } from './regions/region.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -55,6 +56,7 @@ import { Region } from './regions/region.entity';
     RegionsModule,
 
     HotelGroupsModule,
+    AuthModule
   ],
 })
 export class AppModule {}
