@@ -24,7 +24,6 @@ export default function UsersPage() {
     fetch(`http://localhost:3000/users?search=${search}&page=${page}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setUsers(data.users);
         setHasMore(data.hasMore);
       });
@@ -43,8 +42,6 @@ export default function UsersPage() {
 
       setUsers((prev) => prev.filter((user) => user.id !== userId));
     } catch (error) {
-      console.error("Failed to delete user", error);
-      alert("An error occurred while deleting the user.");
     } finally {
       setDeletingUserId(null);
     }
