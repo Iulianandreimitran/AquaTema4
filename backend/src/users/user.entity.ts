@@ -1,3 +1,4 @@
+import { Hotel } from 'src/hotels/hotel.entity';
 import { UserRole } from 'src/user-roles/user-role.entity';
 import {
   Entity,
@@ -11,26 +12,29 @@ import {
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
-  Id: number;
+  id: number;
 
   @Column()
-  Name: string;
+  name: string;
 
   @Column({ unique: true })
-  Email: string;
+  email: string;
 
   @Column()
-  Password: string;
+  password: string;
 
   @Column({ nullable: true })
-  RememberToken: string;
+  rememberToken: string;
 
   @CreateDateColumn()
-  CreatedAt: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  UpdatedAt: Date;
+  updatedAt: Date;
 
   @OneToMany(() => UserRole, (userRole) => userRole.user)
   userRoles: UserRole[];
+
+  @OneToMany(() => Hotel, (hotel) => hotel.admin)
+  adminHotels: Hotel[];
 }
