@@ -82,4 +82,11 @@ export class Hotel {
   @ManyToOne(() => HotelGroup, (group) => group.hotels)
   @JoinColumn({ name: 'groupId' })
   group?: HotelGroup;
+
+  @ManyToOne(() => User, (user) => user.adminHotels)
+  @JoinColumn({ name: 'adminId' })
+  admin: User;
+
+  @Column({ type: 'int', nullable: true })
+  adminId: number;
 }
