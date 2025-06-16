@@ -20,6 +20,8 @@ import { Hotel } from './hotels/hotel.entity';
 import { City } from './cities/city.entity';
 import { Region } from './regions/region.entity';
 import { AuthModule } from './auth/auth.module';
+import { HotelReviewsModule } from './hotel-reviews/hotel-reviews.module';
+import { HotelReview } from './hotel-reviews/entities/hotel-review.entity';
 
 @Module({
   imports: [
@@ -36,7 +38,7 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true,
       // migrations: ['dist/migrations/*.js'],
       // migrationsRun: true,
-      entities: [User, Role, UserRole, Permission, RolePermission, HotelGroup,Hotel,City,Region],
+      entities: [User, Role, UserRole, Permission, RolePermission, HotelGroup,Hotel,City,Region,HotelReview],
     }),
 
     UsersModule,
@@ -56,7 +58,8 @@ import { AuthModule } from './auth/auth.module';
     RegionsModule,
 
     HotelGroupsModule,
-    AuthModule
+    AuthModule,
+    HotelReviewsModule
   ],
 })
 export class AppModule {}
