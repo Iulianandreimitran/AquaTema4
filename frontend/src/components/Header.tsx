@@ -5,22 +5,43 @@ interface HeaderProps {
   title: string;
 }
 
+interface MeResponse {
+  user: {
+    email: string;
+    name: string;
+    sub: number;
+    roles: string[];
+  };
+}
+
 export default function Header({ title }: HeaderProps) {
   const navigate = useNavigate();
   const [userName, setUserName] = useState<string | null>(null);
   const [roles, setRoles] = useState<string[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem("user");
-    if (stored) {
-      const user = JSON.parse(stored);
-      setUserName(user.name);
-      setRoles(user.roles || []);
-    }
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Not authenticated");
+        return res.json();
+      })
+      .then((data: MeResponse) => {
+        setUserName(data.user.name); 
+        setRoles(data.user.roles);
+      })
+      .catch(() => {
+        navigate("/login"); 
+      });
   }, []);
 
-  const handleLogout = () => {
-    localStorage.clear();
+  const handleLogout = async () => {
+    await fetch("http://localhost:3000/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+
     navigate("/");
   };
 

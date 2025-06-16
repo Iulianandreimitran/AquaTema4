@@ -21,7 +21,9 @@ export default function UsersPage() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users?search=${search}&page=${page}`)
+    fetch(`http://localhost:3000/users?search=${search}&page=${page}`, {
+        credentials: "include", 
+    })
       .then((res) => res.json())
       .then((data) => {
         setUsers(data.users);
@@ -38,6 +40,7 @@ export default function UsersPage() {
     try {
       await fetch(`http://localhost:3000/users/${userId}`, {
         method: "DELETE",
+        credentials: "include",
       });
 
       setUsers((prev) => prev.filter((user) => user.id !== userId));

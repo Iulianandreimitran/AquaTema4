@@ -33,7 +33,9 @@ export default function CreateUserForm() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/roles")
+    fetch("http://localhost:3000/roles", {
+    credentials: "include", 
+    })
       .then((res) => res.json())
       .then((data) => setRoles(data));
   }, []);
@@ -90,6 +92,7 @@ export default function CreateUserForm() {
     await fetch("http://localhost:3000/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include", 
       body: JSON.stringify(newUser),
     });
     setIsDirty(false);

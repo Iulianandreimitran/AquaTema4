@@ -58,7 +58,7 @@ export class AuthService {
   async validateLogin(email: string, password: string) {
     const user = await this.userRepo.findOne({
       where: { email },
-      relations: ['userRoles', 'userRoles.role'], // 🔁 Ne trebuie rolurile
+      relations: ['userRoles', 'userRoles.role'], 
     });
 
     if (!user) return null;
@@ -68,6 +68,7 @@ export class AuthService {
 
     const payload = {
       sub: user.id,
+      name: user.name,
       email: user.email,
       roles: user.userRoles.map((ur) => ur.role.name),
     };
@@ -75,7 +76,7 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
 
     return {
-      access_token: token,
+      token, 
       user: {
         id: user.id,
         name: user.name,

@@ -11,7 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
   imports: [
     TypeOrmModule.forFeature([User, Role, UserRole]),
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
+      secret: 'ExzgOlbmDHWuvyfNXPMISFo44E7a+EYSH107oxG0100=',
       signOptions: { expiresIn: '1d' },
     }),
   ],

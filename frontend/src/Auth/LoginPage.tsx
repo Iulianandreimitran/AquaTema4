@@ -21,9 +21,10 @@ export default function LoginPage() {
     if (!validate()) return;
 
     const res = await fetch("http://localhost:3000/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
     });
 
     if (!res.ok) {
@@ -32,8 +33,6 @@ export default function LoginPage() {
     }
 
     const data = await res.json();
-    localStorage.setItem("token", data.access_token);
-    localStorage.setItem("user", JSON.stringify(data.user));
 
     Swal.fire({
       icon: "success",

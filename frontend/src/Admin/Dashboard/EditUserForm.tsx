@@ -40,7 +40,9 @@ export default function EditUserPage() {
 
   useEffect(() => {
     if (!user) {
-      fetch(`http://localhost:3000/users/${id}`)
+      fetch(`http://localhost:3000/users/${id}`, {
+      credentials: 'include',
+      })
         .then((res) => res.json())
         .then((data) => {
           setUser(data);
@@ -50,7 +52,9 @@ export default function EditUserPage() {
       setRoles((user.userRoles as UserRole[]).map((ur) => ur.role.id));
     }
 
-    fetch("http://localhost:3000/roles")
+    fetch("http://localhost:3000/roles", {
+    credentials: 'include',
+    })
       .then((res) => res.json())
       .then(setAllRoles);
   }, [id, user]);
@@ -104,6 +108,7 @@ export default function EditUserPage() {
     await fetch(`http://localhost:3000/users/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(payload),
     });
     setIsDirty(false);
