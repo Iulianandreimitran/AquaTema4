@@ -103,8 +103,8 @@ export default function LoginPage() {
 
         {/* RIGHT - IMAGINE / FUNDAL */}
         <div className="w-1/2 bg-gradient-to-br from-purple-600 via-pink-500 to-indigo-500 text-white flex flex-col justify-center items-center p-6">
-          <h1 className="text-3xl font-bold mb-2">Salut din nou!</h1>
-          <p className="text-lg font-light">Autentifică-te pentru a continua.</p>
+          <h1 className="text-3xl font-bold mb-2">Hello!</h1>
+          <p className="text-lg font-light">Sign in to continue.</p>
         </div>
       </div>
     </div>
