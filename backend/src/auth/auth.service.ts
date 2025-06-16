@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { User } from '../users/user.entity';
 import { Role } from '../roles/role.entity';
 import { UserRole } from 'src/user-roles/user-role.entity';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +19,8 @@ export class AuthService {
 
     @InjectRepository(UserRole)
     private userRoleRepo: Repository<UserRole>,
+
+    private jwtService: JwtService,
   ) {}
 
   async register(dto: RegisterDto) {
@@ -50,5 +53,35 @@ export class AuthService {
 
     await this.userRoleRepo.save(userRole);
     return { message: 'User registered successfully' };
+  }
+
+  async validateLogin(email: string, password: string) {
+    const user = await this.userRepo.findOne({
+      where: { email },
+      relations: ['userRoles', 'userRoles.role'], // 🔁 Ne trebuie rolurile
+    });
+
+    if (!user) return null;
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return null;
+
+    const payload = {
+      sub: user.id,
+      email: user.email,
+      roles: user.userRoles.map((ur) => ur.role.name),
+    };
+
+    const token = this.jwtService.sign(payload);
+
+    return {
+      access_token: token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        roles: payload.roles,
+      },
+    };
   }
 }

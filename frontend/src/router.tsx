@@ -4,6 +4,7 @@ import CreateUserForm from "./Admin/Dashboard/CreateUserForm";
 import EditUserPage from "./Admin/Dashboard/EditUserForm";
 import RegisterPage from "./Auth/RegisterPage";
 import WelcomePage from "./components/WelcomePage";
+import LoginPage from "./Auth/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/users",
     element: <UsersPage />,
+  },
+    {
+    path: "/login",
+    element: <LoginPage />,
   },
   {
     path: "/users/create",

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 interface Role {
   id: number;
@@ -20,6 +21,7 @@ export default function RegisterPage() {
   const [roleId, setRoleId] = useState<number | null>(null);
   const [roles, setRoles] = useState<Role[]>([]);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:3000/roles")
@@ -158,6 +160,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-md w-full font-semibold"
+              onClick={() => navigate("/login")}              
             >
               Submit
             </button>
