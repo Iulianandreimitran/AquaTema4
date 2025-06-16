@@ -36,8 +36,8 @@ export default function LoginPage() {
 
     Swal.fire({
       icon: "success",
-      title: "Bine ai venit!",
-      text: `Salut, ${data.user.name}!`,
+      title: "Welcome",
+      text: `Hello, ${data.user.name}!`,
       showConfirmButton: false,
       timer: 1500,
       toast: true,
@@ -89,12 +89,12 @@ export default function LoginPage() {
             </button>
 
             <p className="text-sm text-gray-600 text-center pt-2">
-              Nu ai cont?{" "}
+              You don't have account? Create account{" "}
               <span
                 className="text-purple-600 hover:underline cursor-pointer"
                 onClick={() => navigate("/register")}
               >
-                Înregistrează-te
+                here
               </span>
             </p>
           </form>

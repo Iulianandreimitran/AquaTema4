@@ -52,9 +52,9 @@ export default function Header({ title }: HeaderProps) {
       <div className="flex items-center gap-4">
         {userName && (
           <div className="text-right">
-            <p className="text-gray-700 font-medium">Salut, {userName}</p>
+            <p className="text-gray-700 font-medium">Hello, {userName}</p>
             <p className="text-xs text-gray-500">
-              Rolul: {roles.join(", ")}
+              Roles: {roles.join(", ")}
             </p>
           </div>
         )}
