@@ -5,11 +5,13 @@ import {
   ManyToOne,
   JoinColumn,
   OneToOne,
+  OneToMany,
 } from 'typeorm';
 import { City } from '../cities/city.entity';
 import { Region } from '../regions/region.entity';
 import { User } from 'src/users/user.entity';
 import { HotelGroup } from 'src/hotel-groups/entities/hotel-group.entity';
+import { HotelReview } from 'src/hotel-reviews/entities/hotel-review.entity';
 
 @Entity('Hotels')
 export class Hotel {
@@ -89,4 +91,37 @@ export class Hotel {
 
   @Column({ type: 'int', nullable: true })
   adminId: number;
+
+  @Column({ type: 'boolean', default: false })
+  hasLocker?: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  hasFitness?: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  hasRelaxArea?: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  hasTurkishBath?: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  hasSpa?: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  hasFitnessRoom?: boolean;
+
+  @Column({ type: 'boolean', default: false })
+  hasSauna?: boolean;
+
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  bookingUrl?: string;
+
+  @Column({ type: 'decimal', precision: 5, scale: 2, nullable: true })
+  DistanceFromAirportKm?: number;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  NearestAirportName?: string;
+
+  @OneToMany(() => HotelReview, (review) => review.hotel)
+  reviews: HotelReview[];
 }
