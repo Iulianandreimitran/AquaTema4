@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 interface User {
   id: number;
@@ -32,23 +33,52 @@ export default function UsersPage() {
   }, [search, page]);
 
   const handleDelete = async (userId: number) => {
-    const confirmed = confirm("Are you sure you want to delete this user?");
-    if (!confirmed) return;
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "This action will permanently delete the user.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (!result.isConfirmed) return;
 
     setDeletingUserId(userId);
 
     try {
-      await fetch(`http://localhost:3000/users/${userId}`, {
+      const res = await fetch(`http://localhost:3000/users/${userId}`, {
         method: "DELETE",
         credentials: "include",
       });
 
+      if (!res.ok) {
+        throw new Error("Failed to delete user");
+      }
+
       setUsers((prev) => prev.filter((user) => user.id !== userId));
+
+      Swal.fire({
+        icon: "success",
+        title: "Deleted!",
+        text: "User has been deleted.",
+        timer: 1500,
+        showConfirmButton: false,
+        toast: true,
+        position: "top-end",
+      });
     } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to delete user.",
+      });
     } finally {
       setDeletingUserId(null);
     }
   };
+
 
   return (
     <div>

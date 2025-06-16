@@ -5,6 +5,8 @@ import EditUserPage from "./Admin/Dashboard/EditUserForm";
 import RegisterPage from "./Auth/RegisterPage";
 import WelcomePage from "./components/WelcomePage";
 import LoginPage from "./Auth/LoginPage";
+import HotelManagerPage from "./Manager/HotelPage";
+
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,11 @@ const router = createBrowserRouter([
     path: "/users/:id/edit",
     element: <EditUserPage />,
   },
+  { 
+    path: "/hotel-page", 
+    element: <HotelManagerPage /> 
+  },
+
 ]);
 
 export default router;
