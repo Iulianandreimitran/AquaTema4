@@ -33,6 +33,7 @@ export default function LoginPage() {
     }
 
     const data = await res.json();
+    const roles = data.user.roles;
 
     Swal.fire({
       icon: "success",
@@ -44,7 +45,14 @@ export default function LoginPage() {
       position: "top-end",
     });
 
-    navigate("/users");
+    if (roles.includes("administrator")) {
+        navigate("/users");
+    } else if (roles.includes("hotel manager")) {
+        navigate("/hotel-page");
+    } else {
+        navigate("/not-authorized");
+    }
+
   };
 
   return (

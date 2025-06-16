@@ -92,7 +92,10 @@ export default function UsersPage() {
                   <p className="text-sm text-gray-600">{user.email}</p>
                 </div>
                 <button
-                  onClick={() => handleDelete(user.id)}
+                  onClick={(e) => {
+                    e.stopPropagation(); 
+                    handleDelete(user.id);
+                  }}
                   disabled={deletingUserId === user.id}
                   className="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded"
                 >

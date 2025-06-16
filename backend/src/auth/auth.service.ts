@@ -70,7 +70,7 @@ export class AuthService {
       sub: user.id,
       name: user.name,
       email: user.email,
-      roles: user.userRoles.map((ur) => ur.role.name),
+      roles: user.userRoles.map((ur) => ur.role.name.toLowerCase()),
     };
 
     const token = this.jwtService.sign(payload);
