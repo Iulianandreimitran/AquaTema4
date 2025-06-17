@@ -18,7 +18,7 @@ export class UsersService {
   ) {}
 
   async getUsers(search: string, page: number) {
-    const PAGE_SIZE = 10;
+    const PAGE_SIZE = 4;
     const whereClause = search ? { name: ILike(`%${search}%`) } : {};
 
     const [users, total] = await this.userRepo.findAndCount({

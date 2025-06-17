@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 interface User {
   id: number;
@@ -23,7 +23,7 @@ export default function UsersPage() {
 
   useEffect(() => {
     fetch(`http://localhost:3000/users?search=${search}&page=${page}`, {
-        credentials: "include", 
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -79,7 +79,6 @@ export default function UsersPage() {
     }
   };
 
-
   return (
     <div>
       <Header title="Dashboard" />
@@ -108,37 +107,39 @@ export default function UsersPage() {
         </div>
 
         {users.length > 0 ? (
-          <div className="grid gap-4">
-            {users.map((user) => (
-              <div
-                onClick={() => handleEdit(user)}
-                key={user.id}
-                className="bg-white shadow-md p-4 rounded-lg border border-gray-200 hover:shadow-lg transition flex justify-between items-center"
-              >
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    {user.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">{user.email}</p>
-                </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation(); 
-                    handleDelete(user.id);
-                  }}
-                  disabled={deletingUserId === user.id}
-                  className="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded"
+          <div className="p-6 max-w-4xl mx-auto flex flex-col relative h-[50vh]">
+            <div className="overflow-y-auto flex-1">
+              {users.map((user) => (
+                <div
+                  onClick={() => handleEdit(user)}
+                  key={user.id}
+                  className="bg-white shadow-md p-4 rounded-lg border border-gray-200 hover:shadow-lg transition flex justify-between items-center"
                 >
-                  {deletingUserId === user.id ? "Deleting..." : "Delete"}
-                </button>
-              </div>
-            ))}
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {user.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">{user.email}</p>
+                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(user.id);
+                    }}
+                    disabled={deletingUserId === user.id}
+                    className="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded"
+                  >
+                    {deletingUserId === user.id ? "Deleting..." : "Delete"}
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <p className="text-center text-gray-500">No users found.</p>
         )}
 
-        <div className="flex items-center justify-between mt-8">
+        <div className="sticky bottom-0 bg-white pt-4 mt-4 flex items-center justify-between border-t border-gray-200">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
