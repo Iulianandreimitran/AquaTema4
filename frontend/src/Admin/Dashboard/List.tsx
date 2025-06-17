@@ -15,11 +15,21 @@ export default function UsersPage() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+
   const navigate = useNavigate();
 
   const handleEdit = (user: User) => {
     navigate(`/users/${user.id}/edit`, { state: { user } });
   };
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(delay);
+  }, [search]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/users?search=${search}&page=${page}`, {
@@ -30,7 +40,7 @@ export default function UsersPage() {
         setUsers(data.users);
         setHasMore(data.hasMore);
       });
-  }, [search, page]);
+  }, [debouncedSearch, page]);
 
   const handleDelete = async (userId: number) => {
     const result = await Swal.fire({

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { useNavigationGuard } from "../../hooks/useNavigationGuard";
+import Swal from "sweetalert2";
+import { useUnloadGuard } from "../../hooks/useUnloadGuard";
+import ErrorText from "../../components/ErrorText";
 
 interface Role {
   id: number;
@@ -27,6 +30,7 @@ export default function CreateUserForm() {
   const navigate = useNavigate();
   const [isDirty, setIsDirty] = useState(false);
   useNavigationGuard(isDirty);
+  useUnloadGuard(isDirty);
 
   const handleCancel = () => {
     navigate("/users");
@@ -34,7 +38,7 @@ export default function CreateUserForm() {
 
   useEffect(() => {
     fetch("http://localhost:3000/roles", {
-    credentials: "include", 
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => setRoles(data));
@@ -56,7 +60,7 @@ export default function CreateUserForm() {
       errors.email = "Invalid email.";
     }
 
-    if (password && password.length > 0 && password.length < 6) {
+    if (password.length < 6) {
       errors.password = "Password at least 6 chars.";
     }
 
@@ -88,15 +92,37 @@ export default function CreateUserForm() {
       roleIds: selectedRoles,
     };
 
-    console.log(newUser);
-    await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include", 
-      body: JSON.stringify(newUser),
-    });
-    setIsDirty(false);
-    handleCancel();
+    try {
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(newUser),
+      });
+      setIsDirty(false);
+      if (!res.ok) {
+        throw new Error("Failed to create user");
+      }
+
+      await Swal.fire({
+        icon: "success",
+        title: "User created successfully!",
+        showConfirmButton: false,
+        timer: 2500,
+        toast: true,
+        position: "top-end",
+      });
+
+      setTimeout(() => {
+        navigate("/users");
+      }, 500);
+    } catch (error) {
+      await Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Could not create user. Please try again.",
+      });
+    }
   };
 
   return (
@@ -120,14 +146,11 @@ export default function CreateUserForm() {
             onChange={(e) => {
               setName(e.target.value);
               setIsDirty(true);
+              setErrors((prev) => ({ ...prev, name: undefined }));
             }}
-            className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none ${
-              errors.name ? "border-red-500" : "border-gray-300"
-            }`}
+            className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none`}
           />
-          {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name}</p>
-          )}
+          <ErrorText message={errors.name} />
         </div>
 
         <div>
@@ -140,15 +163,12 @@ export default function CreateUserForm() {
             onChange={(e) => {
               setEmail(e.target.value);
               setIsDirty(true);
+              setErrors((prev) => ({ ...prev, email: undefined }));
             }}
-            className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            }`}
+            className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none`}
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-          )}
         </div>
+        <ErrorText message={errors.email} />
 
         <div>
           <label className="block text-sm font-medium text-gray-700">
@@ -160,14 +180,11 @@ export default function CreateUserForm() {
             onChange={(e) => {
               setPassword(e.target.value);
               setIsDirty(true);
+              setErrors((prev) => ({ ...prev, password: undefined }));
             }}
-            className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none ${
-              errors.password ? "border-red-500" : "border-gray-300"
-            }`}
+            className={`w-full mt-1 px-4 py-2 border rounded-md focus:outline-none`}
           />
-          {errors.password && (
-            <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-          )}
+          <ErrorText message={errors.password} />
         </div>
 
         <div>
@@ -187,14 +204,13 @@ export default function CreateUserForm() {
                         : [...prev, role.id]
                     );
                     setIsDirty(true);
+                    setErrors((prev) => ({ ...prev, roles: undefined }));
                   }}
                 />
                 <span>{role.name}</span>
               </label>
             ))}
-            {errors.roles && (
-              <p className="text-red-500 text-sm mt-1">{errors.roles}</p>
-            )}
+            <ErrorText message={errors.roles} />
           </div>
         </div>
 

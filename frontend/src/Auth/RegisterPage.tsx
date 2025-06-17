@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import ErrorText from "../components/ErrorText";
+import { useUnloadGuard } from "../hooks/useUnloadGuard";
+import { useNavigationGuard } from "../hooks/useNavigationGuard";
 
 interface Role {
   id: number;
@@ -12,11 +15,14 @@ interface RegisterResponse {
   errorEmail?: string;
   errorRole?: string;
 }
-const ErrorText = ({ message }: { message?: string }) => (
-  <p className={`text-xs  ${message ? "text-red-500" : "text-transparent"}`}>
-    {message || "placeholder"}
-  </p>
-);
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  password?: string;
+  roleId?: string;
+  confirmPassword?: string;
+}
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -25,8 +31,12 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [roleId, setRoleId] = useState<number | null>(null);
   const [roles, setRoles] = useState<Role[]>([]);
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [errors, setErrors] = useState<FormErrors>({});
+
   const navigate = useNavigate();
+  const [isDirty, setIsDirty] = useState(false);
+  useNavigationGuard(isDirty);
+  useUnloadGuard(isDirty);
 
   useEffect(() => {
     fetch("http://localhost:3000/roles")
@@ -35,7 +45,7 @@ export default function RegisterPage() {
   }, []);
 
   const validate = () => {
-    const errs: typeof errors = {};
+    const errs: FormErrors = {};
     if (!name.trim()) errs.name = "Name is required";
     if (!email.includes("@")) errs.email = "Invalid email";
     if (password.length < 6) errs.password = "Password too short";
@@ -51,41 +61,48 @@ export default function RegisterPage() {
     if (!validate()) return;
 
     const payload = { name, email, password, roleId };
-
-    const res = await fetch("http://localhost:3000/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    const data: RegisterResponse = await res.json();
-
-    if (data.message) {
-      Swal.fire({
-        icon: "success",
-        title: "Success!",
-        text: data.message,
-        showConfirmButton: false,
-        timer: 1500,
-        toast: true,
-        position: "top-end",
+    try {
+      const res = await fetch("http://localhost:3000/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
-      setTimeout(() => {
-        navigate("/login");
-      }, 1500);
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setRoleId(null);
-      setErrors({});
-    } else {
-      const newErrors: { [key: string]: string } = {};
+      setIsDirty(false);
+      const data: RegisterResponse = await res.json();
 
-      if (data.errorEmail) newErrors.email = data.errorEmail;
-      if (data.errorRole) newErrors.roleId = data.errorRole;
+      if (data.message) {
+        Swal.fire({
+          icon: "success",
+          title: "Success!",
+          text: data.message,
+          showConfirmButton: false,
+          timer: 1500,
+          toast: true,
+          position: "top-end",
+        });
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+        setName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setRoleId(null);
+        setErrors({});
+      } else {
+        const newErrors: { [key: string]: string } = {};
 
-      setErrors(newErrors);
+        if (data.errorEmail) newErrors.email = data.errorEmail;
+        if (data.errorRole) newErrors.roleId = data.errorRole;
+
+        setErrors(newErrors);
+      }
+    } catch (error) {
+      await Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Register unsuccessful. Please try again.",
+      });
     }
   };
 
@@ -104,6 +121,8 @@ border rounded-xl "
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
+                setIsDirty(true);
+                setErrors((prev) => ({ ...prev, name: undefined }));
               }}
               className="w-full border rounded-md px-4 py-2 text-sm "
             />
@@ -115,6 +134,8 @@ border rounded-xl "
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
+                setIsDirty(true);
+                setErrors((prev) => ({ ...prev, email: undefined }));
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             />
@@ -126,6 +147,8 @@ border rounded-xl "
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
+                setIsDirty(true);
+                setErrors((prev) => ({ ...prev, password: undefined }));
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             />
@@ -137,6 +160,8 @@ border rounded-xl "
               value={confirmPassword}
               onChange={(e) => {
                 setConfirmPassword(e.target.value);
+                setIsDirty(true);
+                setErrors((prev) => ({ ...prev, confirmPassword: undefined }));
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             />
@@ -146,6 +171,8 @@ border rounded-xl "
               value={roleId ?? ""}
               onChange={(e) => {
                 setRoleId(Number(e.target.value));
+                setIsDirty(true);
+                setErrors((prev) => ({ ...prev, roleId: undefined }));
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             >
@@ -160,7 +187,13 @@ border rounded-xl "
 
             <button
               type="submit"
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-md w-full font-semibold"
+              disabled={!isDirty}
+              className={`px-4 py-2 rounded-md shadow transition 
+    ${
+      !isDirty
+        ? "bg-gray-300 cursor-not-allowed text-gray-500 w-full "
+        : "bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-md w-full font-semibold"
+    }`}
             >
               Submit
             </button>
