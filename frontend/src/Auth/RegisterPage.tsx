@@ -12,6 +12,11 @@ interface RegisterResponse {
   errorEmail?: string;
   errorRole?: string;
 }
+const ErrorText = ({ message }: { message?: string }) => (
+  <p className={`text-xs  ${message ? "text-red-500" : "text-transparent"}`}>
+    {message || "placeholder"}
+  </p>
+);
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -65,6 +70,9 @@ export default function RegisterPage() {
         toast: true,
         position: "top-end",
       });
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
       setName("");
       setEmail("");
       setPassword("");
@@ -82,9 +90,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="flex shadow-lg rounded-xl overflow-hidden max-w-4xl w-full bg-white">
-        <div className="w-1/2 p-8 bg-white flex flex-col justify-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="flex flex-col lg:flex-row rounded-xl overflow-hidden max-w-4xl w-full">
+        <div
+          className="w-full md:w-1/2 p-6 sm:p-8flex flex-col justify-center mx-auto 
+border rounded-xl "
+        >
           <form onSubmit={handleSubmit} className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-800 mb-12">Sign Up</h2>
 
@@ -96,9 +107,7 @@ export default function RegisterPage() {
               }}
               className="w-full border rounded-md px-4 py-2 text-sm "
             />
-            {errors.name && (
-              <p className="text-red-500 text-xs">{errors.name}</p>
-            )}
+            <ErrorText message={errors.name} />
 
             <input
               placeholder="Email"
@@ -109,9 +118,7 @@ export default function RegisterPage() {
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             />
-            {errors.email && (
-              <p className="text-red-500 text-xs">{errors.email}</p>
-            )}
+            <ErrorText message={errors.email} />
 
             <input
               placeholder="Password"
@@ -122,9 +129,7 @@ export default function RegisterPage() {
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             />
-            {errors.password && (
-              <p className="text-red-500 text-xs">{errors.password}</p>
-            )}
+            <ErrorText message={errors.password} />
 
             <input
               placeholder="Confirm Password"
@@ -135,9 +140,7 @@ export default function RegisterPage() {
               }}
               className="w-full border rounded-md px-4 py-2 text-sm"
             />
-            {errors.confirmPassword && (
-              <p className="text-red-500 text-xs">{errors.confirmPassword}</p>
-            )}
+            <ErrorText message={errors.confirmPassword} />
 
             <select
               value={roleId ?? ""}
@@ -153,21 +156,27 @@ export default function RegisterPage() {
                 </option>
               ))}
             </select>
-            {errors.roleId && (
-              <p className="text-red-500 text-xs">{errors.roleId}</p>
-            )}
+            <ErrorText message={errors.roleId} />
 
             <button
               type="submit"
               className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-md w-full font-semibold"
-              onClick={() => navigate("/login")}              
             >
               Submit
             </button>
+            <p className="text-sm text-center mt-4">
+              Already registered?{" "}
+              <span
+                onClick={() => navigate("/login")}
+                className="text-purple-600 hover:underline cursor-pointer font-medium"
+              >
+                Log in here
+              </span>
+            </p>
           </form>
         </div>
 
-        <div className="w-1/2 bg-gradient-to-br from-purple-600 via-pink-500 to-indigo-500 text-white flex flex-col justify-center items-center p-6">
+        <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-purple-600 via-pink-500 to-indigo-500 text-white flex flex-col justify-center items-center p-6">
           <h1 className="text-3xl font-bold mb-2">Hey</h1>
           <p className="text-lg font-light">Register here!</p>
         </div>
