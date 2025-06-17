@@ -71,11 +71,11 @@ export class Hotel {
   @Column({ type: 'varchar', length: 10, nullable: true })
   SourceGroupCode?: string;
 
-  @OneToOne(() => User)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'managerId' })
   manager: User;
 
-  @Column({ type: 'int', nullable: true, unique: true }) // unique
+  @Column({ type: 'int', nullable: true, unique: false }) // unique
   managerId: number;
 
   @Column({ type: 'int', nullable: true })
