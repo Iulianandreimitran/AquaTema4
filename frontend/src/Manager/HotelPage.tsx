@@ -7,12 +7,22 @@ interface Hotel {
   GlobalPropertyName: string;
   PropertyAddress1?: string;
   SabrePropertyRating?: number;
+  hasLocker?: boolean;
   hasFitness?: boolean;
-  hasSpa?: boolean;
   hasRelaxArea?: boolean;
+  hasTurkishBath?: boolean;
+  hasSpa?: boolean;
+  hasFitnessRoom?: boolean;
+  hasSauna?: boolean;
   group?: {
     name: string;
   };
+  cleanliness_score?: number;
+  food_score?: number;
+  sleep_score?: number;
+  internet_score?: number;
+  amenities_score?: number;
+  final_score?: number;
 }
 
 export default function HotelPage() {
@@ -44,7 +54,9 @@ export default function HotelPage() {
 
   useEffect(() => {
     const restricted = userRoles.some((role) =>
-      ["traveler", "data_operator"].includes(role.toLowerCase().replace(/\s/g, "_"))
+      ["traveler", "data_operator"].includes(
+        role.toLowerCase().replace(/\s/g, "_")
+      )
     );
 
     if (!isLoadingRoles && restricted) {
@@ -56,7 +68,6 @@ export default function HotelPage() {
     const isHotelManager = userRoles.some(
       (role) => role.toLowerCase().replace(/\s/g, "_") === "hotel_manager"
     );
-
 
     if (!isLoadingRoles && isHotelManager) {
       console.log("📡 Sending request to /hotels/my-hotels...");
@@ -77,41 +88,85 @@ export default function HotelPage() {
           navigate("/login");
         });
     }
-
   }, [userRoles, isLoadingRoles]);
 
   return (
     <div>
       <Header title="Hotel Manager Dashboard" />
       <div className="max-w-4xl mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4">Your Assigned Hotels</h2>
+        <h2 className="text-3xl font-bold mb-6 text-gray-800">
+          🏨 Your Assigned Hotels
+        </h2>
+
         {hotels.length === 0 ? (
-          <p className="text-gray-600">No hotels assigned to you.</p>
+          <p className="text-gray-600 text-lg">No hotels assigned to you.</p>
         ) : (
-          <ul className="grid gap-4">
+          <ul className="grid gap-6">
             {hotels.map((hotel) => (
               <li
                 key={hotel.GlobalPropertyID}
-                className="border p-4 rounded shadow bg-white"
+                className="border p-6 rounded-xl shadow-md bg-white space-y-2"
               >
-                <h3 className="text-xl font-semibold text-blue-800">
+                <h3 className="text-2xl font-semibold text-blue-900">
                   {hotel.GlobalPropertyName}
                 </h3>
+
                 {hotel.PropertyAddress1 && (
-                  <p className="text-gray-600">📍 {hotel.PropertyAddress1}</p>
+                  <p className="text-base text-gray-700">
+                    📍 {hotel.PropertyAddress1}
+                  </p>
                 )}
+
                 {hotel.group?.name && (
-                  <p className="text-sm text-gray-500">🧩 Group: {hotel.group.name}</p>
+                  <p className="text-base text-gray-500">
+                    🧩 Group: {hotel.group.name}
+                  </p>
                 )}
-                <p className="text-sm text-gray-600">
-                  ⭐ Rating: {hotel.SabrePropertyRating ?? "N/A"}
-                </p>
-                <p className="text-sm text-gray-600">
-                  🧘‍♂️ Facilities:
-                  {hotel.hasFitness && " Fitness,"}
-                  {hotel.hasSpa && " Spa,"}
-                  {hotel.hasRelaxArea && " Relax Area"}
-                  {!hotel.hasFitness && !hotel.hasSpa && !hotel.hasRelaxArea && " None"}
+
+                <div className="mt-2 space-y-1 text-base text-gray-700">
+                  <p>
+                    🧹 <strong>Cleanliness:</strong>{" "}
+                    {hotel.cleanliness_score ?? "N/A"} / 10
+                  </p>
+                  <p>
+                    🍽️ <strong>Food:</strong> {hotel.food_score ?? "N/A"} / 10
+                  </p>
+                  <p>
+                    🛌 <strong>Sleep:</strong> {hotel.sleep_score ?? "N/A"} / 10
+                  </p>
+                  <p>
+                    🌐 <strong>Internet:</strong>{" "}
+                    {hotel.internet_score ?? "N/A"} / 10
+                  </p>
+                  <p>
+                    🛎️ <strong>Amenities:</strong>{" "}
+                    {hotel.amenities_score ?? "N/A"} / 10
+                  </p>
+                  <p>
+                    📊 <strong className="text-blue-800">Final Score:</strong>{" "}
+                    <span className="text-lg font-bold text-blue-700">
+                      {hotel.final_score ?? "N/A"} / 10
+                    </span>
+                  </p>
+                </div>
+
+                <p className="mt-3 text-base text-gray-700">
+                  🧘‍♂️ <strong>Facilities:</strong>{" "}
+                  {(hotel.hasFitness && "Fitness, ") || ""}
+                  {(hotel.hasSpa && "Spa, ") || ""}
+                  {(hotel.hasRelaxArea && "Relax Area, ") || ""}
+                  {(hotel.hasTurkishBath && "Turkish Bath, ") || ""}
+                  {(hotel.hasLocker && "Locker, ") || ""}
+                  {(hotel.hasFitnessRoom && "Fitness Room, ") || ""}
+                  {(hotel.hasSauna && "Sauna") || ""}
+                  {!hotel.hasFitness &&
+                    !hotel.hasSpa &&
+                    !hotel.hasRelaxArea &&
+                    !hotel.hasTurkishBath &&
+                    !hotel.hasLocker &&
+                    !hotel.hasFitnessRoom &&
+                    !hotel.hasSauna &&
+                    "None"}
                 </p>
               </li>
             ))}

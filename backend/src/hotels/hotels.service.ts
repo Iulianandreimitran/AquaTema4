@@ -1,4 +1,8 @@
-import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, LessThan } from 'typeorm';
 import { Hotel } from './hotel.entity';
@@ -15,11 +19,21 @@ export class HotelsService {
   ) {}
 
   async getHotelsByManager(managerId: number) {
-    return this.hotelRepo.find({
+    const hotels = await this.hotelRepo.find({
       where: { managerId },
       relations: ['group'],
       order: { GlobalPropertyName: 'ASC' },
     });
+
+    return hotels.map((hotel) => ({
+      ...hotel,
+      cleanliness_score: scaleToTen(hotel.cleanliness_score ?? null),
+      food_score: scaleToTen(hotel.food_score ?? null),
+      sleep_score: scaleToTen(hotel.sleep_score ?? null),
+      internet_score: scaleToTen(hotel.internet_score ?? null),
+      amenities_score: scaleToTen(hotel.amenities_score ?? null),
+      final_score: scaleToTen(hotel.final_score ?? null),
+    }));
   }
 
   async getHotelsWithIdBelow100() {
@@ -30,13 +44,12 @@ export class HotelsService {
   }
 
   async assignManagerToHotel(hotelId: number, managerId: number | null) {
-
     if (!Number.isInteger(hotelId)) {
-      throw new BadRequestException("Invalid hotel ID");
+      throw new BadRequestException('Invalid hotel ID');
     }
 
     const hotel = await this.hotelRepo.findOneBy({ GlobalPropertyID: hotelId });
-    if (!hotel) throw new NotFoundException("Hotel not found");
+    if (!hotel) throw new NotFoundException('Hotel not found');
 
     if (managerId === null) {
       hotel.manager = null;
@@ -49,9 +62,11 @@ export class HotelsService {
       relations: ['managerHotel'],
     });
 
-    if (!manager) throw new NotFoundException("Manager not found");
+    if (!manager) throw new NotFoundException('Manager not found');
     if (manager.managerHotel) {
-      throw new BadRequestException("This manager is already assigned to a hotel");
+      throw new BadRequestException(
+        'This manager is already assigned to a hotel',
+      );
     }
 
     hotel.manager = manager;
@@ -59,6 +74,8 @@ export class HotelsService {
 
     return this.hotelRepo.save(hotel);
   }
-
-
+}
+function scaleToTen(normalized: number | null): number | null {
+  if (normalized === null || normalized === undefined) return null;
+  return Math.round((normalized * 9 + 1) * 100) / 100;
 }

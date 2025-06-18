@@ -75,7 +75,7 @@ export class Hotel {
   @JoinColumn({ name: 'managerId' })
   manager: User | null;
 
-  @Column({ type: 'int', nullable: true, unique: false }) 
+  @Column({ type: 'int', nullable: true, unique: false })
   managerId: number | null;
 
   @Column({ type: 'int', nullable: true })
@@ -124,4 +124,22 @@ export class Hotel {
 
   @OneToMany(() => HotelReview, (review) => review.hotel)
   reviews: HotelReview[];
+
+  @Column({ type: 'double precision', nullable: true })
+  cleanliness_score?: number;
+
+  @Column({ type: 'double precision', nullable: true })
+  food_score?: number;
+
+  @Column({ type: 'double precision', nullable: true })
+  sleep_score?: number;
+
+  @Column({ type: 'double precision', nullable: true })
+  internet_score?: number;
+
+  @Column({ type: 'double precision', nullable: true })
+  amenities_score?: number;
+  
+  @Column({ type: 'double precision', nullable: true })
+  final_score?: number;
 }
