@@ -79,11 +79,11 @@ export class Hotel {
   managerId: number | null;
 
   @Column({ type: 'int', nullable: true })
-  groupId?: number;
+  groupId?: number | null;
 
   @ManyToOne(() => HotelGroup, (group) => group.hotels)
   @JoinColumn({ name: 'groupId' })
-  group?: HotelGroup;
+  group?: HotelGroup| null;
 
   @ManyToOne(() => User, (user) => user.adminHotels)
   @JoinColumn({ name: 'adminId' })

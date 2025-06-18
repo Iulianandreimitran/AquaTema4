@@ -15,5 +15,6 @@ import { User } from '../users/user.entity';
   ],
   controllers: [HotelsController],
   providers: [HotelsService],
+  exports: [HotelsService],
 })
 export class HotelsModule {}

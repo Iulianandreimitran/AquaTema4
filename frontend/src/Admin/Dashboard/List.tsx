@@ -143,10 +143,17 @@ export default function UsersPage() {
               </button>
 
               <button
+                onClick={() => navigate("/assign-hotels-to-group")}
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow transition"
+              >
+                🧩 Configure Hotel Groups
+              </button>
+
+              <button
                 onClick={() => navigate("/users/configure-managers")}
                 className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow transition"
               >
-                ⚙️ Configurare Manageri
+                ⚙️ Configure Managers
               </button>
             </div>
           )}

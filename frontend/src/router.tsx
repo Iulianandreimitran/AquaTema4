@@ -8,7 +8,9 @@ import LoginPage from "./Auth/LoginPage";
 import HotelManagerPage from "./Manager/HotelPage";
 import NotAuthorizedPage from "./Traveler/NotAuthorizedPage";
 import ConfigureManagersPage from "./Admin/Dashboard/ConfigureManagersPage";
-
+import AssignHotelsToGroupPage from "./HotelGroup/AssignHotelsToGroupPage";
+import CreateHotelGroupPage from "./HotelGroup/CreateHotelGroupPage";
+import EditHotelGroupPage from "./HotelGroup/EditHotelGroupPage";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +48,19 @@ const router = createBrowserRouter([
   {
   path: "/users/configure-managers",
   element: <ConfigureManagersPage />
-  }
+  },
+  {
+    path: "/assign-hotels-to-group",
+    element: <AssignHotelsToGroupPage />,
+  },
+  {
+    path: "/create-hotel-group",
+    element: <CreateHotelGroupPage />,
+  },
+    {
+    path: "/edit-hotel-group/:id",
+    element: <EditHotelGroupPage />,
+  },
 
 ]);
 
