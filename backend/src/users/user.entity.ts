@@ -40,7 +40,7 @@ export class User {
   @OneToMany(() => Hotel, (hotel) => hotel.admin)
   adminHotels: Hotel[];
 
-  @OneToMany( ()=> Hotel, (hotel) => hotel.manager)
+  @OneToOne( ()=> Hotel, (hotel) => hotel.manager)
   managerHotel: Hotel
 
   @OneToMany(() => HotelReview, (review) => review.user)

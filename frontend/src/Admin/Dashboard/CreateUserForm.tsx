@@ -27,6 +27,9 @@ export default function CreateUserForm() {
   const [selectedRoles, setSelectedRoles] = useState<number[]>([]);
   const [errors, setErrors] = useState<FormErrors>({});
 
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+  const [isLoadingRoles, setIsLoadingRoles] = useState(true);
+
   const navigate = useNavigate();
   const [isDirty, setIsDirty] = useState(false);
   useNavigationGuard(isDirty);
@@ -35,6 +38,22 @@ export default function CreateUserForm() {
   const handleCancel = () => {
     navigate("/users");
   };
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setUserRoles(data.user.roles))
+      .catch(() => navigate("/login"))
+      .finally(() => setIsLoadingRoles(false));
+  }, []);
+
+  useEffect(() => {
+    const normalized = userRoles.map((r) => r.toLowerCase().replace(/\s/g, "_"));
+    if (!isLoadingRoles && !normalized.includes("administrator")) {
+      navigate("/not-authorized");
+    }
+  }, [userRoles, isLoadingRoles]);
 
   useEffect(() => {
     fetch("http://localhost:3000/roles", {

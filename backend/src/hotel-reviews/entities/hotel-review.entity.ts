@@ -41,4 +41,20 @@ export class HotelReview {
   @ManyToOne(() => User, { nullable: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @Column({ type: 'float', nullable: true })
+  cleanliness_text: number;
+
+  @Column({ type: 'float', nullable: true })
+  food_text: number;
+
+  @Column({ type: 'float', nullable: true })
+  sleep_text: number;
+
+  @Column({ type: 'float', nullable: true })
+  internet_text: number;
+
+  @Column({ type: 'float', nullable: true })
+  amenities_text: number;
+
 }

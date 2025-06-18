@@ -6,6 +6,8 @@ import RegisterPage from "./Auth/RegisterPage";
 import WelcomePage from "./components/WelcomePage";
 import LoginPage from "./Auth/LoginPage";
 import HotelManagerPage from "./Manager/HotelPage";
+import NotAuthorizedPage from "./Traveler/NotAuthorizedPage";
+import ConfigureManagersPage from "./Admin/Dashboard/ConfigureManagersPage";
 
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
     path: "/hotel-page", 
     element: <HotelManagerPage /> 
   },
+  {
+  path: "/not-authorized",
+  element: <NotAuthorizedPage />
+  },
+  {
+  path: "/users/configure-managers",
+  element: <ConfigureManagersPage />
+  }
 
 ]);
 

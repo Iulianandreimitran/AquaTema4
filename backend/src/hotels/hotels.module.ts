@@ -5,10 +5,11 @@ import { HotelsController } from './hotels.controller';
 import { Hotel } from './hotel.entity';
 import { AuthModule } from '../auth/auth.module'; // ✅
 import { JwtModule } from '@nestjs/jwt'; // ✅
+import { User } from '../users/user.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Hotel]),
+    TypeOrmModule.forFeature([Hotel, User]),
     AuthModule,  
     JwtModule.register({}), 
   ],

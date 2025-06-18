@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException  } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, ILike } from 'typeorm';
 import * as bcrypt from 'bcrypt';
@@ -94,10 +94,8 @@ export class UsersService {
 
     await this.userRepo.save(user);
 
-    // Ștergem vechile roluri
     await this.userRoleRepo.delete({ user: { id } });
 
-    // Adăugăm noile roluri
     for (const roleId of data.roles) {
       const role = await this.roleRepo.findOneBy({ id: roleId });
       if (role) {
@@ -116,6 +114,23 @@ export class UsersService {
     }
 
     return { message: 'User deleted successfully' };
+  }
+
+  async getUsersByRole(roleName: string) {
+
+    if (!roleName || typeof roleName !== "string") {
+      throw new BadRequestException("Role name is required and must be a string.");
+    }
+
+    const users = await this.userRepo
+      .createQueryBuilder("user")
+      .leftJoinAndSelect("user.userRoles", "userRole")
+      .leftJoinAndSelect("userRole.role", "role")
+      .where("LOWER(role.name) = LOWER(:roleName)", { roleName }) // 🔁 comparare tolerantă la majuscule
+      .select(["user.id", "user.name"])
+      .getMany();
+
+    return users;
   }
 
 }

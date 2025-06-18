@@ -8,10 +8,12 @@ import {
   Query,
   Delete,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { RolesGuard } from '../auth/roles.guard';
+import { RolesGuard } from '../roles/roles.guard';
+import { BadRequestException  } from '@nestjs/common';
 
 @Controller('users')
 @UseGuards(JwtAuthGuard)
@@ -26,14 +28,26 @@ export class UsersController {
     const pageNum = parseInt(page, 10);
     return this.usersService.getUsers(search, pageNum);
   }
+  
+  @Get("/hotel-managers")
+  @UseGuards(new RolesGuard("administrator"))
+  getHotelManagers() {
+    return this.usersService.getUsersByRole("Hotel Manager");
+  }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return this.usersService.findById(+id);
+    const parsed = parseInt(id, 10);
+    if (isNaN(parsed)) {
+      console.error("❌ Invalid user id:", id);
+      throw new BadRequestException("Invalid user ID");
+    }
+
+    return this.usersService.findById(parsed);
   }
 
   @Post()
-  @UseGuards(new RolesGuard('administrator')) // doar admin poate crea useri
+  @UseGuards(new RolesGuard('administrator'))
   async createUser(@Body() body: any) {
     return this.usersService.createUser(body);
   }
@@ -49,5 +63,13 @@ export class UsersController {
   async deleteUser(@Param('id') id: string) {
     return this.usersService.deleteUser(+id);
   }
+
+
+
+
+
+
+
+
 
 }

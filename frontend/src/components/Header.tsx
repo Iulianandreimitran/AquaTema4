@@ -18,6 +18,7 @@ export default function Header({ title }: HeaderProps) {
   const navigate = useNavigate();
   const [userName, setUserName] = useState<string | null>(null);
   const [roles, setRoles] = useState<string[]>([]);
+  
 
   useEffect(() => {
     fetch("http://localhost:3000/auth/me", {
@@ -28,7 +29,7 @@ export default function Header({ title }: HeaderProps) {
         return res.json();
       })
       .then((data: MeResponse) => {
-        setUserName(data.user.name); 
+        setUserName(data.user.name);
         setRoles(data.user.roles);
       })
       .catch(() => {

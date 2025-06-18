@@ -31,6 +31,9 @@ export default function EditUserPage() {
   const [roles, setRoles] = useState<number[]>([]);
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+  const [isLoadingRoles, setIsLoadingRoles] = useState(true);
+
 
   const navigate = useNavigate();
 
@@ -53,6 +56,25 @@ export default function EditUserPage() {
         });
     }
   }, [id]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setUserRoles(data.user.roles))
+      .catch(() => navigate("/login"))
+      .finally(() => setIsLoadingRoles(false));
+  }, []);
+
+  useEffect(() => {
+    const normalized = userRoles.map((r) => r.toLowerCase().replace(/\s/g, "_"));
+    if (!isLoadingRoles && !normalized.includes("administrator")) {
+      navigate("/not-authorized");
+    }
+  }, [userRoles, isLoadingRoles]);
+
+
 
   useEffect(() => {
     if (user) {

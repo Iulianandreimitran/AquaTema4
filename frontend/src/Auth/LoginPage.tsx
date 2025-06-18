@@ -10,8 +10,8 @@ export default function LoginPage() {
 
   const validate = () => {
     const errs: typeof errors = {};
-    if (!email.includes("@")) errs.email = "Email invalid";
-    if (password.length < 6) errs.password = "Parolă prea scurtă";
+    if (!email.includes("@")) errs.email = "Invalid email";
+    if (password.length < 6) errs.password = "Password too short";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };

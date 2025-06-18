@@ -71,12 +71,12 @@ export class Hotel {
   @Column({ type: 'varchar', length: 10, nullable: true })
   SourceGroupCode?: string;
 
-  @ManyToOne(() => User)
+  @OneToOne(() => User)
   @JoinColumn({ name: 'managerId' })
-  manager: User;
+  manager: User | null;
 
-  @Column({ type: 'int', nullable: true, unique: false }) // unique
-  managerId: number;
+  @Column({ type: 'int', nullable: true, unique: false }) 
+  managerId: number | null;
 
   @Column({ type: 'int', nullable: true })
   groupId?: number;

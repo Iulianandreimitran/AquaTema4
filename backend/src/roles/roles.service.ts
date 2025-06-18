@@ -13,4 +13,5 @@ export class RolesService {
   async getAll() {
     return this.roleRepo.find();
   }
+
 }

@@ -16,23 +16,49 @@ export default function UsersPage() {
   const [hasMore, setHasMore] = useState(false);
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
   const [debouncedSearch, setDebouncedSearch] = useState(search);
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+  const [isLoadingRoles, setIsLoadingRoles] = useState(true);
 
   const navigate = useNavigate();
 
-  const handleEdit = (user: User) => {
-    navigate(`/users/${user.id}/edit`, { state: { user } });
-  };
+  const normalizedRoles = userRoles.map(r => r.toLowerCase().replace(/\s/g, "_"));
+  const isReadOnly = normalizedRoles.includes("hotel_manager") && normalizedRoles.length === 1;
+
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUserRoles(data.user.roles);
+      })
+      .catch(() => {
+        setUserRoles([]);
+      })
+      .finally(() => {
+        setIsLoadingRoles(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    const restricted = userRoles.some((role) =>
+      ["traveler", "data_operator"].includes(role.toLowerCase().replace(/\s/g, "_"))
+    );
+
+    if (!isLoadingRoles && restricted) {
+      navigate("/not-authorized");
+    }
+  }, [userRoles, isLoadingRoles]);
 
   useEffect(() => {
     const delay = setTimeout(() => {
       setDebouncedSearch(search);
-    }, 500);
-
+    }, 400);
     return () => clearTimeout(delay);
   }, [search]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users?search=${search}&page=${page}`, {
+    fetch(`http://localhost:3000/users?search=${debouncedSearch}&page=${page}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -42,7 +68,15 @@ export default function UsersPage() {
       });
   }, [debouncedSearch, page]);
 
+  const handleEdit = (user: User) => {
+    if (!isReadOnly) {
+      navigate(`/users/${user.id}/edit`, { state: { user } });
+    }
+  };
+
   const handleDelete = async (userId: number) => {
+    if (isReadOnly) return;
+
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "This action will permanently delete the user.",
@@ -89,18 +123,33 @@ export default function UsersPage() {
     }
   };
 
+  if (isLoadingRoles) {
+    return <p className="text-center text-gray-500 mt-8">Loading roles...</p>;
+  }
+
   return (
     <div>
       <Header title="Dashboard" />
       <div className="p-6 max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold text-gray-800">Hei, Dashboard!</h1>
-          <button
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition"
-            onClick={() => navigate("/users/create")}
-          >
-            + Create User
-          </button>
+          {!isReadOnly && (
+            <div className="flex gap-2">
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition"
+                onClick={() => navigate("/users/create")}
+              >
+                + Create User
+              </button>
+
+              <button
+                onClick={() => navigate("/users/configure-managers")}
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow transition"
+              >
+                ⚙️ Configurare Manageri
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="mb-6">
@@ -123,7 +172,9 @@ export default function UsersPage() {
                 <div
                   onClick={() => handleEdit(user)}
                   key={user.id}
-                  className="bg-white shadow-md p-4 rounded-lg border border-gray-200 hover:shadow-lg transition flex justify-between items-center"
+                  className={`bg-white shadow-md p-4 rounded-lg border border-gray-200 transition flex justify-between items-center ${
+                    isReadOnly ? "cursor-default" : "hover:shadow-lg cursor-pointer"
+                  }`}
                 >
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800">
@@ -131,16 +182,18 @@ export default function UsersPage() {
                     </h3>
                     <p className="text-sm text-gray-600">{user.email}</p>
                   </div>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDelete(user.id);
-                    }}
-                    disabled={deletingUserId === user.id}
-                    className="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded"
-                  >
-                    {deletingUserId === user.id ? "Deleting..." : "Delete"}
-                  </button>
+                  {!isReadOnly && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(user.id);
+                      }}
+                      disabled={deletingUserId === user.id}
+                      className="text-red-600 hover:text-red-800 font-medium text-sm border border-red-600 px-3 py-1 rounded"
+                    >
+                      {deletingUserId === user.id ? "Deleting..." : "Delete"}
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
