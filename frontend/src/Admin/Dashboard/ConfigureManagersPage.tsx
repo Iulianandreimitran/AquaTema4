@@ -46,7 +46,7 @@ export default function ConfigureManagersPage() {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ managerId }), // poate fi și null aici
+        body: JSON.stringify({ managerId }), 
         });
 
         if (!response.ok) {
@@ -60,7 +60,7 @@ export default function ConfigureManagersPage() {
                 ...hotel,
                 manager: managerId
                     ? managers.find((m) => m.id === managerId) || undefined
-                    : undefined, // 🔄 dacă e null => scoatem managerul
+                    : undefined, 
                 }
             : hotel
         )
