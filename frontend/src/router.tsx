@@ -10,6 +10,9 @@ import NotAuthorizedPage from "./Traveler/NotAuthorizedPage";
 import ConfigureManagersPage from "./Admin/Dashboard/ConfigureManagersPage";
 import RankedHotelsTable from "./Manager/RankingTable";
 import HeatmapPage from "./Manager/HeatMapRanking";
+import AssignHotelsToGroupPage from "./HotelGroup/AssignHotelsToGroupPage";
+import CreateHotelGroupPage from "./HotelGroup/CreateHotelGroupPage";
+import EditHotelGroupPage from "./HotelGroup/EditHotelGroupPage";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +59,23 @@ const router = createBrowserRouter([
     path: "/hotels/heat-map-ranking",
     element: <HeatmapPage />,
   },
+  {
+  path: "/users/configure-managers",
+  element: <ConfigureManagersPage />
+  },
+  {
+    path: "/assign-hotels-to-group",
+    element: <AssignHotelsToGroupPage />,
+  },
+  {
+    path: "/create-hotel-group",
+    element: <CreateHotelGroupPage />,
+  },
+    {
+    path: "/edit-hotel-group/:id",
+    element: <EditHotelGroupPage />,
+  },
+
 ]);
 
 export default router;

@@ -1,1 +1,4 @@
-export class CreateHotelGroupDto {}
+export class CreateHotelGroupDto {
+  name: string;
+  managerId: number;
+}

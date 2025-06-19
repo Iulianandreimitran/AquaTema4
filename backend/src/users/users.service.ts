@@ -126,7 +126,7 @@ export class UsersService {
       .createQueryBuilder("user")
       .leftJoinAndSelect("user.userRoles", "userRole")
       .leftJoinAndSelect("userRole.role", "role")
-      .where("LOWER(role.name) = LOWER(:roleName)", { roleName }) // 🔁 comparare tolerantă la majuscule
+      .where("LOWER(role.name) = LOWER(:roleName)", { roleName }) 
       .select(["user.id", "user.name"])
       .getMany();
 

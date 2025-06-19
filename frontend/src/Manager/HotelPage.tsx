@@ -14,9 +14,7 @@ interface Hotel {
   hasSpa?: boolean;
   hasFitnessRoom?: boolean;
   hasSauna?: boolean;
-  group?: {
-    name: string;
-  };
+  group?: { name: string };
   cleanliness_score?: number;
   food_score?: number;
   sleep_score?: number;
@@ -32,15 +30,12 @@ export default function HotelPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/auth/me", {
-      credentials: "include",
-    })
+    fetch("http://localhost:3000/auth/me", { credentials: "include" })
       .then((res) => {
         if (!res.ok) throw new Error("Auth check failed");
         return res.json();
       })
       .then((data) => {
-        console.log("✅ Roles received:", data.user.roles);
         setUserRoles(data.user.roles || []);
       })
       .catch((err) => {
@@ -58,7 +53,6 @@ export default function HotelPage() {
         role.toLowerCase().replace(/\s/g, "_")
       )
     );
-
     if (!isLoadingRoles && restricted) {
       navigate("/not-authorized");
     }
@@ -70,22 +64,20 @@ export default function HotelPage() {
     );
 
     if (!isLoadingRoles && isHotelManager) {
-      console.log("📡 Sending request to /hotels/my-hotels...");
-
-      fetch("http://localhost:3000/hotels/my-hotels", {
-        credentials: "include",
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error("Not authenticated");
-          return res.json();
-        })
-        .then((data) => {
-          console.log("✅ Hotels received:", data);
-          setHotels(data);
+      Promise.all([
+        fetch("http://localhost:3000/hotels/my-hotels", { credentials: "include" }).then((res) => res.json()),
+        fetch("http://localhost:3000/hotels/group-hotels", { credentials: "include" }).then((res) => res.json())
+      ])
+        .then(([myHotels, groupHotels]) => {
+          const combined = [...(myHotels || []), ...(groupHotels || [])];
+          const unique = combined.filter(
+            (hotel, index, self) =>
+              index === self.findIndex((h) => h.GlobalPropertyID === hotel.GlobalPropertyID)
+          );
+          setHotels(unique);
         })
         .catch((err) => {
-          console.error("❌ Error fetching hotels:", err);
-          navigate("/login");
+          console.error("❌ Error loading hotels:", err);
         });
     }
   }, [userRoles, isLoadingRoles]);

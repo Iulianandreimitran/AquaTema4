@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, LessThan, Between } from 'typeorm';
+import {  IsNull } from 'typeorm';
 import { Hotel } from './hotel.entity';
 import { User } from '../users/user.entity';
 
@@ -138,6 +139,36 @@ export class HotelsService {
       };
     });
   }
+
+  async getHotelsByGroupManager(managerId: number): Promise<Hotel[]> {
+    const hotels = await this.hotelRepo
+      .createQueryBuilder("hotel")
+      .leftJoinAndSelect("hotel.group", "group")
+      .where("group.managerId = :managerId", { managerId })
+      .getMany();
+
+    return hotels.map((hotel) => ({
+      ...hotel,
+      cleanliness_score: scaleToTen(hotel.cleanliness_score ?? null) ?? undefined,
+      food_score: scaleToTen(hotel.food_score ?? null) ?? undefined,
+      sleep_score: scaleToTen(hotel.sleep_score ?? null) ?? undefined,
+      internet_score: scaleToTen(hotel.internet_score ?? null) ?? undefined,
+      amenities_score: scaleToTen(hotel.amenities_score ?? null) ?? undefined,
+      final_score: scaleToTen(hotel.final_score ?? null) ?? undefined,
+    }));
+  }
+
+  async getUnassignedHotels() {
+    return this.hotelRepo.find({
+      where: {
+        groupId: IsNull(),
+        GlobalPropertyID: LessThan(100),
+      },
+      order: { GlobalPropertyName: 'ASC' },
+    });
+  }
+
+  
 }
 function scaleToTen(normalized: number | null | undefined): number | undefined {
   if (normalized == null) return undefined;
