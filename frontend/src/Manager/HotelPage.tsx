@@ -111,7 +111,7 @@ export default function HotelPage() {
 
                 {hotel.group?.name && (
                   <p className="text-base text-gray-500">
-                    🧩 Group: {hotel.group.name}
+                    🏘️ Group: {hotel.group.name}
                   </p>
                 )}
 

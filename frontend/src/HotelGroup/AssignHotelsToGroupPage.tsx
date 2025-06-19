@@ -19,8 +19,28 @@ export default function AssignHotelsToGroupPage() {
   const [availableHotels, setAvailableHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const normalize = (r: string) => r.toLowerCase().replace(/\s/g, "_");
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+  const [isLoadingRoles, setIsLoadingRoles] = useState(true);
 
-  // 🔁 Încarcă toate grupurile
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setUserRoles(data.user.roles || []))
+      .catch(() => navigate("/login"))
+      .finally(() => setIsLoadingRoles(false));
+  }, []);
+
+  useEffect(() => {
+    const isAdmin = userRoles.map(normalize).includes("administrator");
+    if (!isLoadingRoles && !isAdmin) {
+      navigate("/not-authorized");
+    }
+  }, [userRoles, isLoadingRoles]);
+
+
   useEffect(() => {
     fetch("http://localhost:3000/hotel-groups", {
       credentials: "include",
@@ -44,7 +64,6 @@ export default function AssignHotelsToGroupPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  // 🔁 Încarcă hoteluri neasignate doar când e selectat un grup
   useEffect(() => {
     if (!selectedGroupId) {
       setAvailableHotels([]);
@@ -64,7 +83,6 @@ export default function AssignHotelsToGroupPage() {
       });
   }, [selectedGroupId]);
 
-  // ✅ Asignare hotel într-un grup
   const assignHotel = async (hotelId: number) => {
     if (!selectedGroupId || typeof selectedGroupId !== "number") return;
 
@@ -97,6 +115,9 @@ export default function AssignHotelsToGroupPage() {
     }
   };
 
+  if (isLoadingRoles) {
+    return <p className="text-center mt-8 text-gray-500">Loading access...</p>;
+  }
   return (
     <div>
       <Header title="Assign Hotels to Group" />

@@ -1,5 +1,6 @@
 import { HotelReview } from 'src/hotel-reviews/entities/hotel-review.entity';
 import { Hotel } from 'src/hotels/hotel.entity';
+import { HotelGroup } from 'src/hotel-groups/entities/hotel-group.entity';
 import { UserRole } from 'src/user-roles/user-role.entity';
 import {
   Entity,
@@ -45,4 +46,8 @@ export class User {
 
   @OneToMany(() => HotelReview, (review) => review.user)
   reviews: HotelReview[];
+
+  @OneToOne(() => HotelGroup, (group) => group.manager)
+  managedGroup: HotelGroup;
+
 }

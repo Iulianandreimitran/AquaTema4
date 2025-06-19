@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Swal from "sweetalert2";
 
-// ✅ Tip pentru hotel (poți extinde dacă ai nevoie de mai multe câmpuri)
 interface Hotel {
   GlobalPropertyID: number;
   GlobalPropertyName: string;
@@ -13,6 +12,26 @@ export default function EditHotelGroupPage() {
   const { id } = useParams();
   const groupId = Number(id);
   const [hotels, setHotels] = useState<Hotel[]>([]);
+  const navigate = useNavigate();
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+  const [isLoadingRoles, setIsLoadingRoles] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setUserRoles(data.user.roles || []))
+      .catch(() => navigate("/login"))
+      .finally(() => setIsLoadingRoles(false));
+  }, []);
+
+  useEffect(() => {
+    const normalized = userRoles.map((r) => r.toLowerCase().replace(/\s/g, "_"));
+    if (!isLoadingRoles && !normalized.includes("administrator")) {
+      navigate("/not-authorized");
+    }
+  }, [userRoles, isLoadingRoles]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/hotel-groups/${groupId}`, {
@@ -42,6 +61,44 @@ export default function EditHotelGroupPage() {
     }
   };
 
+  const removeGroup = async () => {
+    const hasHotels = hotels.length > 0;
+
+    const confirm = await Swal.fire({
+      title: hasHotels ? "Force delete group?" : "Delete group?",
+      text: hasHotels
+        ? "This group still has hotels assigned. They will be unlinked automatically."
+        : "This will permanently delete the group.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: hasHotels ? "Yes, force delete!" : "Yes, delete",
+    });
+
+    if (!confirm.isConfirmed) return;
+
+    const endpoint = hasHotels
+      ? `http://localhost:3000/hotel-groups/${groupId}/force`
+      : `http://localhost:3000/hotel-groups/${groupId}`;
+
+    const res = await fetch(endpoint, {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    if (res.ok) {
+      await Swal.fire("Deleted!", "Hotel group was removed.", "success");
+      navigate("/assign-hotels-to-group");
+    } else {
+      Swal.fire("Error", "Could not delete the group.", "error");
+    }
+  };
+
+  if (isLoadingRoles) {
+    return <p className="text-center mt-10 text-gray-500">Loading access...</p>;
+  }
+
   return (
     <div>
       <Header title="Edit Hotel Group" />
@@ -67,6 +124,15 @@ export default function EditHotelGroupPage() {
             ))
           )}
         </ul>
+
+        <div className="flex justify-end mt-8">
+          <button
+            onClick={removeGroup}
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+          >
+            🗑 Remove Group
+          </button>
+        </div>
       </div>
     </div>
   );

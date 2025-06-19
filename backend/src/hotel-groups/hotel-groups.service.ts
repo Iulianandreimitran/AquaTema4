@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateHotelGroupDto } from './dto/create-hotel-group.dto';
 import { UpdateHotelGroupDto } from './dto/update-hotel-group.dto';
 import { HotelGroup } from './entities/hotel-group.entity';
@@ -45,8 +45,8 @@ export class HotelGroupsService {
   }
 
   async remove(id: number) {
-    const group = await this.findOne(id);
-    if (!group) throw new Error("Group not found");
+    const group = await this.hotelGroupRepo.findOneBy({ id });
+    if (!group) throw new NotFoundException('Group not found');
     return this.hotelGroupRepo.remove(group);
   }
 
@@ -62,6 +62,22 @@ export class HotelGroupsService {
     await this.hotelRepo.update(hotelId, { groupId: null });
     return { message: 'Hotel removed from group' };
   }
+
+  async forceDelete(id: number) {
+    const group = await this.hotelGroupRepo.findOne({
+      where: { id },
+      relations: ['hotels'],
+    });
+
+    if (!group) throw new NotFoundException('Group not found');
+
+    if (group.hotels?.length) {
+      await this.hotelRepo.update({ groupId: id }, { groupId: null });
+    }
+
+    return this.hotelGroupRepo.remove(group);
+  }
+
 
 }
 

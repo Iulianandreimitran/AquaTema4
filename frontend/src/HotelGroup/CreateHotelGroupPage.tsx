@@ -8,8 +8,26 @@ export default function CreateHotelGroupPage() {
   const [managers, setManagers] = useState<{ id: number; name: string }[]>([]);
   const [selectedManager, setSelectedManager] = useState<number | "">("");
   const navigate = useNavigate();
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+  const [isLoadingRoles, setIsLoadingRoles] = useState(true);
 
-  // 🔁 Fetch manageri (doar cu rolul hotel_manager)
+  useEffect(() => {
+    fetch("http://localhost:3000/auth/me", {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setUserRoles(data.user.roles || []))
+      .catch(() => navigate("/login"))
+      .finally(() => setIsLoadingRoles(false));
+  }, []);
+
+  useEffect(() => {
+    const normalized = userRoles.map((r) => r.toLowerCase().replace(/\s/g, "_"));
+    if (!isLoadingRoles && !normalized.includes("administrator")) {
+      navigate("/not-authorized");
+    }
+  }, [userRoles, isLoadingRoles]);
+
   useEffect(() => {
     fetch("http://localhost:3000/users/hotel-managers", {
       credentials: "include",
@@ -30,7 +48,7 @@ export default function CreateHotelGroupPage() {
     try {
       const res = await fetch("http://localhost:3000/hotel-groups", {
         method: "POST",
-        credentials: "include", // ✅ trimite JWT-ul (cookie)
+        credentials: "include", 
         headers: {
           "Content-Type": "application/json",
         },
@@ -61,6 +79,10 @@ export default function CreateHotelGroupPage() {
       Swal.fire("Oops", "Could not create group", "error");
     }
   };
+
+  if (isLoadingRoles) {
+    return <p className="text-center mt-10 text-gray-500">Loading access...</p>;
+  }
 
   return (
     <div>

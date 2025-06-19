@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException  } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, ILike } from 'typeorm';
 import * as bcrypt from 'bcrypt';
@@ -108,10 +108,22 @@ export class UsersService {
   }
 
   async deleteUser(id: number) {
-    const result = await this.userRepo.delete(id);
-    if (result.affected === 0) {
-      throw new Error('User not found or already deleted');
+    const user = await this.userRepo.findOne({
+      where: { id },
+      relations: ['managedGroup'], // verificăm dacă are hotel group
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
     }
+
+    if (user.managedGroup) {
+      throw new BadRequestException(
+        'Cannot delete user: is assigned as manager to a hotel group.'
+      );
+    }
+
+    await this.userRepo.delete(id);
 
     return { message: 'User deleted successfully' };
   }

@@ -98,7 +98,17 @@ export default function UsersPage() {
       });
 
       if (!res.ok) {
-        throw new Error("Failed to delete user");
+        const error = await res.json();
+        if (error.message?.includes("assigned as manager")) {
+          Swal.fire(
+            "Blocked",
+            "This user manages a hotel group and cannot be deleted.",
+            "warning"
+          );
+        } else {
+          Swal.fire("Error", "Failed to delete user.", "error");
+        }
+        return;
       }
 
       setUsers((prev) => prev.filter((user) => user.id !== userId));
@@ -121,6 +131,7 @@ export default function UsersPage() {
     } finally {
       setDeletingUserId(null);
     }
+
   };
 
   if (isLoadingRoles) {

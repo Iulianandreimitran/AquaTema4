@@ -77,4 +77,10 @@ export class HotelGroupsController {
   remove(@Param('id') id: string) {
     return this.hotelGroupsService.remove(+id);
   }
+
+  @Delete(':id/force')
+  async forceRemove(@Param('id') id: string) {
+    return this.hotelGroupsService.forceDelete(+id);
+  }
+
 }

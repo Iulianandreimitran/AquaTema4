@@ -25,7 +25,6 @@ export class HotelsController {
     return this.hotelsService.getHotelsByManager(userId);
   }
 
-  @Get('/assignable')
   @Get('unassigned')
   @UseGuards(new RolesGuard('administrator'))
   getUnassignedHotels() {
