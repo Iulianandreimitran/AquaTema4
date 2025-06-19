@@ -172,6 +172,14 @@ export default function HotelPage() {
             ))}
           </ul>
         )}
+        <div className="flex justify-end mb-6 mt-24">
+          <button
+            onClick={() => navigate("/hotels/hotels-ranking")}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded shadow"
+          >
+            📊 See Ranking
+          </button>
+        </div>
       </div>
     </div>
   );

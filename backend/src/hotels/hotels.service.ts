@@ -4,7 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, LessThan } from 'typeorm';
+import { Repository, LessThan, Between } from 'typeorm';
 import { Hotel } from './hotel.entity';
 import { User } from '../users/user.entity';
 
@@ -74,8 +74,72 @@ export class HotelsService {
 
     return this.hotelRepo.save(hotel);
   }
+  async getRankedHotelsGroupedByCity() {
+    const hotels = await this.hotelRepo.find({
+      relations: ['city'],
+      where: {
+        GlobalPropertyID: Between(25, 73),
+      },
+      order: { GlobalPropertyName: 'ASC' },
+    });
+
+    const normalizedHotels = hotels.map((hotel) => ({
+      ...hotel,
+      final_score: scaleToTen(hotel.final_score ?? undefined),
+    }));
+    const grouped = normalizedHotels.reduce(
+      (acc, hotel) => {
+        const city = hotel.city;
+
+        if (!city) return acc;
+
+        const existingGroup = acc.find(
+          (group) => group.city.CityID === city.CityID,
+        );
+
+        if (existingGroup) {
+          existingGroup.hotels.push(hotel);
+        } else {
+          acc.push({
+            city: {
+              CityID: city.CityID,
+              CityName: city.CityName,
+            },
+            hotels: [hotel],
+          });
+        }
+
+        return acc;
+      },
+      [] as {
+        city: { CityID: number; CityName: string };
+        hotels: typeof hotels;
+      }[],
+    );
+
+    for (const group of grouped) {
+      group.hotels.sort((a, b) => (b.final_score ?? 0) - (a.final_score ?? 0));
+    }
+
+    return grouped;
+  }
+
+  async getHeatmapDataFromGroupedHotels() {
+    const grouped = await this.getRankedHotelsGroupedByCity();
+
+    return grouped.map((group) => {
+      const top10 = group.hotels.slice(0, 10);
+
+      return {
+        city: group.city,
+        averageScore:
+          top10.reduce((acc, h) => acc + (h.final_score ?? 0), 0) /
+          top10.length,
+      };
+    });
+  }
 }
-function scaleToTen(normalized: number | null): number | null {
-  if (normalized === null || normalized === undefined) return null;
+function scaleToTen(normalized: number | null | undefined): number | undefined {
+  if (normalized == null) return undefined;
   return Math.round((normalized * 9 + 1) * 100) / 100;
 }
