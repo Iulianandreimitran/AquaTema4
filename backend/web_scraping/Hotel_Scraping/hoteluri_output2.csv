@@ -1,0 +1,30 @@
+﻿GlobalPropertyName,PropertyAddress1,NearestAirportName,DistanceFromAirportKm,hasLocker,hasFitness,hasRelaxArea,hasTurkishBath,hasSpa,hasFitnessRoom,hasSauna,
+Hotel Cora,"Bd. Mamaia, Nr. 201, 900540 Constanţa, România",TrenGara Constanța,4.6,https://www.booking.com/hotel/ro/cora.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Casa Kito,"Strada Ion Lahovari, Nr 34, 900598 Constanţa, România",TrenGara Constanța,2.1,https://www.booking.com/hotel/ro/casa-ceti.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel Carol,"Str. Mihail Kogalniceanu nr. 15, 900659 Constanţa, România",TrenGara Constanța,1,https://www.booking.com/hotel/ro/carol.ro.html,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE
+Hotel Ten Constanta,"STR.TRAIAN NR.53, 900725 Constanţa, România",TrenGara Constanța,1.8,https://www.booking.com/hotel/ro/ten-constanta-constanta.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Seaview Residence,"37 Strada Mircea cel Bătrân apartament 1,etajul 1, Bloc MN1, 900178 Constanţa, România",TrenGara Constanța,2.4,https://www.booking.com/hotel/ro/seaview-residence-constanta.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Golden Tulip Ana Dome Hotel,"129, Observatorului Street, 400352 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,9,https://www.booking.com/hotel/ro/golden-tulip-ana-dome.ro.html,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,TRUE
+Sara Boutique Villa,"Strada Sarmisegetuza 27, 900676 Constanţa, România",TrenGara Constanța,1.5,https://www.booking.com/hotel/ro/sara-boutique-villa.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Casa Jolie,"Strada Agatului nr. 11, 900001 Constanţa, România",TrenGara Constanța,6,https://www.booking.com/hotel/ro/casa-jolie.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Guci Hotel,"23 Rascoala din 1907 St., 900727 Constanţa, România",TrenGara Constanța,2.2,https://www.booking.com/hotel/ro/guci.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+The Anchor Apartment,"Bulevardul Ferdinand 46, 900178 Constanţa, România",TrenGara Constanța,1.6,https://www.booking.com/hotel/ro/the-anchor-apartment-constanta1.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+HOW Boutique and Hotel,"Strada Sinaia 43, 400347 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,9,https://www.booking.com/hotel/ro/house-of-watches-boutique-and.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Grand Hotel Italia,"Str. Vasile Conta Nr. 2, 400478 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/grand-italia.ro.html,TRUE,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE
+Hotel Athos R.M.T.,"Becas, Nr.42, 400478 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/athos.ro.html,FALSE,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE
+Hotel Beyfin,"Piaţa Avram Iancu Nr.3, 400098 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,5,https://www.booking.com/hotel/ro/beyfin.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel Confort,"Calea Turzii 48, 400193 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/confort.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Grand Hotel Napoca,"str. Octavian Goga, nr. 1, 400698 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,7,https://www.booking.com/hotel/ro/grand-napoca.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel PASO,"Calea Turzii nr 83, Cluj-Napoca, 400193 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/paso.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel River Park,"B-dul 1 Decembrie nr. 120A , 400604 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,9,https://www.booking.com/hotel/ro/sun.ro.html,FALSE,TRUE,TRUE,FALSE,FALSE,TRUE,TRUE
+Hotel Select,"Piata 14 Decembrie 1989 nr 2, 700123 Iaşi, România",Aeroportul Internaţional Iași,5,https://www.booking.com/hotel/ro/select.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel Vibre,"Strada Constantin Brâncuși 48/54, 400347 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,5,https://www.booking.com/hotel/ro/vibre.ro.html,FALSE,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE
+Hotel Univers,"Al. Vaida Voevod, 53-55, 400436 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,4.1,https://www.booking.com/hotel/ro/univers-t.ro.html,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hanul Fullton,"Decebal Str. No. 22-24, 400037 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/hanul-fullton.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel International Iasi,"Str.Palat/Complex Palas, 700019 Iaşi, România",Aeroportul Internaţional Iași,4.1,https://www.booking.com/hotel/ro/international-iasi.ro.html,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE
+Unirea Hotel & Spa,"Piaţa Unirii Street No. 5, 700056 Iaşi, România",Aeroportul Internaţional Iași,5,https://www.booking.com/hotel/ro/unirea.ro.html,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE
+Hotel Transilvania,"Regele Ferdinand 20,  400110 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/transilvania.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel Astoria City Center,"1 Lapusneanu Street, 700057 Iaşi, România",Aeroportul Internaţional Iași,5,https://www.booking.com/hotel/ro/astoria.ro.html,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE,TRUE
+Hotel Meridian,"Str. Calea Turzii, Nr. 62, 400913 Cluj-Napoca, România",Aeroportul Internaţional Avram Iancu Cluj,6,https://www.booking.com/hotel/ro/hotel-meridian.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Ramada Iasi City Center,"27 Grigore Ureche Street, 700023 Iaşi, România",Aeroportul Internaţional Iași,3.4,https://www.booking.com/hotel/ro/ramada-iasi-city-center.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE
+Hotel Majestic,"Petru Rares, nr 7, 700126 Iaşi, România",Aeroportul Internaţional Iași,5,https://www.booking.com/hotel/ro/majestic-spa.ro.html,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE

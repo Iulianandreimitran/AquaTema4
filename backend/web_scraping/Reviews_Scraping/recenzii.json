@@ -1,0 +1,434 @@
+[
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Plăcut",
+    "scor": "8,0",
+    "sejur": "iunie 2025",
+    "pozitiv": "Curățenia",
+    "negativ": "Nu are frigider, pahare de apă"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "iunie 2025",
+    "pozitiv": "Am revenit cu plăcere in acesta locație.",
+    "negativ": "Un mini frigider ar prinde foarte bine."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excelent",
+    "scor": "10",
+    "sejur": "iunie 2025",
+    "pozitiv": "Locația\nParcarea gratuita\nCele mai bune restaurante imediat în apropiere",
+    "negativ": "Un mic frigider în camera ar fi binevenit."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Ok pentru o noapte",
+    "scor": "9,0",
+    "sejur": "aprilie 2025",
+    "pozitiv": "Loc de parcare in fata, locatie centrala, camera foarte ok si comfortabila.",
+    "negativ": "Izolatie fonica 0. Se aude tot afara de la ultimul etaj camera spre strada. Cosul de gunoi din baie neschimbat"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Recomand!",
+    "scor": "10",
+    "sejur": "mai 2025",
+    "pozitiv": "Locatia se afla intr-o zona accesibila, oferind parcare privata.\nSpatiul de cazare a fost  curat si aerisit, la ferestra sunt montate plase pt tantati iar aparatul de aer conditionat este functional.\nLenjeria si prosoapele au fost impecabile.\nRaportul pret-calitate este foarte bun.\nRecomand cu incredere.",
+    "negativ": "Nu sunt aspecte de mentionat."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "mai 2025",
+    "pozitiv": "Locația excelenta .",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Superb",
+    "scor": "9,0",
+    "sejur": "aprilie 2025",
+    "pozitiv": "Curătenia interioară.",
+    "negativ": "1.Televizorul defect cu imagine execrabilă\n2. Elementele de securitate ptr.accesarea camerei mult prea multe, sofisticate si obositoare ptr.o clădire situată chiar la strada principală (cifru, cutie chei,  coduri acces, cartela acces usă clădire, cod acces cameră...)."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "mai 2025",
+    "pozitiv": "A fost liniște.",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "structura ok, recomand",
+    "scor": "10",
+    "sejur": "aprilie 2025",
+    "pozitiv": "locatie ok, practic nou, curatenie foarte buna, pentru mine perfect",
+    "negativ": "scara, cam ingusta si, sa urci la 3 cu geamta, cam incomod."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Superb",
+    "scor": "9,0",
+    "sejur": "martie 2025",
+    "pozitiv": "La general totul a fost f bine, nr curat, amplasarea pu noi ideala",
+    "negativ": "Un pic nu comod in baie e mica si apa curgea f incet in dus"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Recomand locatia3",
+    "scor": "10",
+    "sejur": "martie 2025",
+    "pozitiv": "Curatenie - excelent\nConfort pat - excelent\nParcare in fata propietatii",
+    "negativ": "Doar 1 noptiera"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Superb",
+    "scor": "9,0",
+    "sejur": "martie 2025",
+    "pozitiv": "Curățenia",
+    "negativ": "Camera și baia extrem de mici"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Recomand, foarte frumos",
+    "scor": "10",
+    "sejur": "martie 2025",
+    "pozitiv": "Locatia este linistita, frumoasa, aproape de centru,locul de parcare excelent, camera foarte draguta.",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Superb",
+    "scor": "9,0",
+    "sejur": "martie 2025",
+    "pozitiv": "Totul perfect, locatie buna, parcare, curatenie, self check in",
+    "negativ": "Un singur minus cu apa de la dus care nu are deloc presiune"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Spectacol-Circul Globus,cazare  David’s superb!!!",
+    "scor": "10",
+    "sejur": "martie 2025",
+    "pozitiv": "Ușor de găsit (la stradă),accesul în interior foarte safe,curățenie și căldură super!!!",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "ianuarie 2025",
+    "pozitiv": "",
+    "negativ": "Masina blocata de o doamna care își făcea un tratament și avea pretenția sa fie așteptată pana termina.."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Camera este foarte curată , dar nu are facilități suficiente pentru acest preț",
+    "scor": "8,0",
+    "sejur": "februarie 2025",
+    "pozitiv": "Curățenie și receptivitate administrator care a ajutat cu locul de parcare și checkin mai devreme cu o oră .",
+    "negativ": "La camera cu fereastră spre stradă se aude destul de tare zgomotul din trafic . Lipsa frigider , unui fierbător pt ceai . Pernele ar putea fi mai comfortabile ."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "februarie 2025",
+    "pozitiv": "Curățenia, confortul, parcarea.",
+    "negativ": "---"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "ianuarie 2025",
+    "pozitiv": "Foarte curat",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "ianuarie 2025",
+    "pozitiv": "Totul nou,modern si curat.Acces facil,self check-in. Recomandam!",
+    "negativ": "Nimic de adaugat."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "decembrie 2024",
+    "pozitiv": "Cladire noua,camera curata,baia impecabila,fara mirosuri,lenjerie si prosoape curate,parcare in fata locatiei,self check-in facil.",
+    "negativ": "Nu a existat nimic care sa nu-mi fi placut insa o masuta pe terasa ar fi adus un plus."
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "A fost excelent!",
+    "scor": "10",
+    "sejur": "decembrie 2024",
+    "pozitiv": "Am fost plăcut surprinsă ca este aproape de centru, cu loc de parcare și a fost foarte curat și confortabil.",
+    "negativ": "Nu a fost cazul"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "noiembrie 2024",
+    "pozitiv": "Curat,pat confortabilt,intim si modern ,self check-in,cladire noua.",
+    "negativ": "Totul a fost in regula"
+  },
+  {
+    "hotel_id": 1,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/davids-rental-rooms.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "decembrie 2024",
+    "pozitiv": "Totul a fost foarte bine, curățenie, loc de parcare în fața clădirii. Personal amabil, dispus să răspundă rapid la orice întrebare.",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "In buricul tirgului",
+    "scor": "10",
+    "sejur": "ianuarie 2025",
+    "pozitiv": "Tot perfect, proaspat reinoit, in centru, peste asteptariile mele",
+    "negativ": "Parcare poate fi o problema in zona"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "lux",
+    "scor": "10",
+    "sejur": "decembrie 2024",
+    "pozitiv": "camera și baia foarte mare  lux",
+    "negativ": "totul  e la superlativ"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "revin",
+    "scor": "10",
+    "sejur": "decembrie 2024",
+    "pozitiv": "locație, design",
+    "negativ": "-"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Foarte bine",
+    "scor": "8,0",
+    "sejur": "septembrie 2024",
+    "pozitiv": "Bun.",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Weekend Bucuresti",
+    "scor": "10",
+    "sejur": "septembrie 2024",
+    "pozitiv": "Camera, pernele foarte comode, locatia",
+    "negativ": "Pentru familiile cu copii, în weekend seara e puțin cam galagie."
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "iulie 2024",
+    "pozitiv": "Pozitionarea hotelului in centru vechi, camera si baia foarte mari, curățenie, minibar free. Totul perfect! Recomand!",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Foarte bine",
+    "scor": "8,0",
+    "sejur": "mai 2024",
+    "pozitiv": "Locatia excelenta",
+    "negativ": "Ca nu are balcon\nTastatura de la intrarea in camera nu functiona corespunzator, greu pana a luat codul, am cam stat pe la usa.."
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Totul la superlativ.",
+    "scor": "10",
+    "sejur": "mai 2024",
+    "pozitiv": "Curățenia , decorul , amplasarea vilei.",
+    "negativ": "-"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Un hotel super pentru persoanele care merg la somn dupa ora 1.",
+    "scor": "9,0",
+    "sejur": "mai 2024",
+    "pozitiv": "Totul a fost curat, frumos, modern.",
+    "negativ": "Pentru persoanele care doresc liniste, nu este indicat. Pana la ora 1, 2 noaptea se aude muzica din puburile de la parter, ca si cum ar fi in camera."
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "super",
+    "scor": "10",
+    "sejur": "martie 2024",
+    "pozitiv": "totul",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Fabulos",
+    "scor": "10",
+    "sejur": "februarie 2024",
+    "pozitiv": "Un hotel minunat, inedit, mic dejun excelent. Foarte curat, o baie imensă, duș grozav, ai la dispozitie tot ce ai avea nevoie in deplasare.",
+    "negativ": "Nu este cazul."
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Sedere minunata in centrul Bucurestiului",
+    "scor": "10",
+    "sejur": "februarie 2024",
+    "pozitiv": "Camera cu design moderm si culori vii, baie mare  si moderna, mini bar inclus, mic dejun f bun in restaurantul de jos, personal super amabil si la hotel si la restaurant",
+    "negativ": "Noaptea la Ganesha muzica era la maxim, la 4 dimineata, chemand politia s au calmat"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Un loc de suflet❤",
+    "scor": "10",
+    "sejur": "februarie 2024",
+    "pozitiv": "Ne-a plăcut totul, un loc minunat! Camera spațioasă, curata, dotata cu absolut tot ce-ai putea avea nevoie. Baia enorma, totul viu colorat cu un design deosebit și cu foarte mare atenție la detalii. Ne-am simțit extraordinar și recomandam cu drag atat pentru poziția excelentă cât și pentru starea de bine pe care am avut-o pe parcursul celor două zile petrecute în acest hotel.",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Foarte bine",
+    "scor": "8,0",
+    "sejur": "ianuarie 2024",
+    "pozitiv": "Acces usor prin cod, multa culoare in camera, cada si dus, atentii minibar gratuite, cafea, curat",
+    "negativ": "Faptul ca pe pat era doar un cearsaf si a trebuit sa bag eu pilota in el, ea fiind in dulap in luna ianuarie"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Colori in ianuarie",
+    "scor": "10",
+    "sejur": "ianuarie 2024",
+    "pozitiv": "Culorile camerei, cordialitatea personalului, zona, liniștea",
+    "negativ": "Că nu sunt rafturi in zona joasa a șifonierului!"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Elegant și Relaxantă Locație 😊",
+    "scor": "10",
+    "sejur": "noiembrie 2023",
+    "pozitiv": "Foarte elegantă camera",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "august 2023",
+    "pozitiv": "A fost perfect,  exact ce ne-am dorit. Mulțumim gazdelor!",
+    "negativ": "-"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Nota 10",
+    "scor": "10",
+    "sejur": "iulie 2023",
+    "pozitiv": "Tot.",
+    "negativ": "Parcare"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Cazare foarte ok !",
+    "scor": "9,0",
+    "sejur": "mai 2023",
+    "pozitiv": "camera curată, micul dejun bun, personalul foarte ok , camera complet utilată, baia foarte spațioasă, locație foarte aproape de unde aveam treaba",
+    "negativ": "am avut o camera care avea baia deasupra unei terasa și se auzea puți la gălăgia de la terasa"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Primul 10 curat din sute de hoteluri vizitate !",
+    "scor": "10",
+    "sejur": "mai 2023",
+    "pozitiv": "Absolut totul ...oricat de carcotas ai putea fi nu ai ce  cusur sa gasesti. Liniste , confort, curatenie .",
+    "negativ": "Ca a trebuit sa plec ..."
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Raport calitate/pret excelent- aproape de 5 stele",
+    "scor": "10",
+    "sejur": "mai 2023",
+    "pozitiv": "Camera si baia sunt foarte mari si dotate performant, locatie ultracentrala,curatenie,foarte bun raport calitate/pret pentru Bucuresti, ape, sucuri, bere, alune si altele gratuit in minibar. Camera (si baia) in care am stat, cu mici ajustari de functionalitate se apropie de una de 5 stele.",
+    "negativ": "Sfaturi: salteaua ar putea fi inlocuita, are unele denivelari si cadere pe partea patului dinspre usa. Cand faci dus curge apa pe sub usile glisante.Se pot monta si doua pahare pentru pus periuta, pasta de dinti sau aparatul de ras.S-ar putea pune si o patura de rezerva in dulap.Cu aceste ajustari de functionalitate ajungeti usor la 5 stele."
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Superb",
+    "scor": "9,0",
+    "sejur": "aprilie 2023",
+    "pozitiv": "Locație, amenajare și curățenie",
+    "negativ": "Controlul temperaturii in camera"
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Excepţional",
+    "scor": "10",
+    "sejur": "martie 2023",
+    "pozitiv": "Chiar daca locatia este super centrala este foarte liniste. Curatenie exemplara, camere spatioase si par foarte comod.",
+    "negativ": ""
+  },
+  {
+    "hotel_id": 2,
+    "hotel_url": "https://www.booking.com/reviews/ro/hotel/vilacrosse-boutique-inn.ro.html?aid=356980&label=gog235jc-1BCCoowAE4vgNIM1gDaMABiAEBmAEguAEXyAEM2AEB6AEBiAIBqAIDuAK4oMDCBsACAdICJDA4YWM5NmQ4LTMxMWYtNGRhYi05MjRkLTkyOTJkZDUzZTI1YdgCBeACAQ&sid=cac6206be3c5be93d35a71988dc56a3c",
+    "titlu": "Superb",
+    "scor": "9,0",
+    "sejur": "martie 2023",
+    "pozitiv": "Locație și curatenie",
+    "negativ": "Zgomot nu doar seara dar și din.ineata datorita personalului prea matinal"
+  }
+]
