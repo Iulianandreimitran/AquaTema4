@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
   port: 5432,
   username: 'postgres',
   password: '1234',
-  database: 'mini_sprint_2',
+  database: 'mini_sprint_4',
   synchronize: false,
   entities: [User, Permission, UserRole, Role, RolePermission],
   migrations: ['src/migrations/.ts'],
